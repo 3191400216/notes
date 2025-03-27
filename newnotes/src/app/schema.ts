@@ -17,10 +17,10 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `period2projectruth_${name}`);
+export const createTable = pgTableCreator((name) => `newnotes_${name}`);
 
-export const images = createTable(
-  "image",
+export const posts_01 = createTable(
+  "POST",
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }),
@@ -38,18 +38,4 @@ export const images = createTable(
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
   })
-);
-
-export const posts = createTable(
-  "post",
-  {
-    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
-    content: varchar("content", { length: 256 }),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
-    ),
-  }
 );

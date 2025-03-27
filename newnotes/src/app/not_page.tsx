@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import MyButton from "../mybutton";
 
 
 import { useState, ChangeEvent } from "react";
@@ -41,8 +40,7 @@ export default function HomePage() {
       });
 
       const data = await response.json() as ReturnData;
-      //not showing the response
-      //data.message connects to nothings
+      
       if (response.ok) {
         setSuccessMessage(data.message); // Show success message
         setText(""); // Clear input
@@ -100,50 +98,6 @@ export default function HomePage() {
     </div>
   </aside>
         </div>
-       
-        
-
-        <div className="flex box-border size-100 gap-5 justify-center">
-          <input id="text" placeholder="Title" className="input input-bordered max-w-xs justify-center hover:bg-purple-200"/>
-          <textarea id="text" placeholder="Type here" className="input input-bordered w-full max-w-xs justify-center hover:bg-sky-200"/>
-          <MyButton></MyButton>
-        </div>
       </main> 
     );
   }
-    /*<main className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-semibold text-center mb-4">Upload Text</h1>
-        
-       // {/* Display any error message */
-       // {error && <div className="alert alert-error mb-4"><span>{error}</span></div>}
-
-       // {/* Display success message */}
-        //{successMessage && <div className="alert alert-success mb-4"><span>{successMessage}</span></div>}
-
-        /*<input
-          type="text"
-          value={text}
-          onChange={handleTextChange}
-          placeholder="Enter text here"
-          className="input input-bordered w-full mb-4"
-        />
-
-        <button 
-          onClick={handleButtonClick}
-          className="btn btn-primary w-full"
-          disabled={loading} // Disable button during loading
-        >
-          {loading ? "Uploading..." : "Upload Text"}
-        </button>
-      </div>
-    </main>
-  );
-}*/
-
-/*export default function HomePage() {
-  return (
-    
-  );
-}*/
-
