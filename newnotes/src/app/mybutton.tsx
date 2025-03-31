@@ -17,6 +17,10 @@ type ReturnData = {
       setText(e.target.value);
     };
 
+    const handleWritingChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setText(e.target.value);
+    };
+
 const handleButtonClick = async () => {
     if (text.trim() === "") {
       alert("Please enter some text.");
@@ -51,7 +55,7 @@ const handleButtonClick = async () => {
     } finally {
       setLoading(false); // End loading state
     }
-  
+ 
   };
   return (
     <main>
@@ -67,13 +71,21 @@ const handleButtonClick = async () => {
         placeholder="Type here"
         className="input input-bordered w-full mb-4"
       />
+      
+      <input
+              type="text"
+              value={text}
+              onChange={handleWritingChange}
+              placeholder="Title"
+              className="input input-bordered w-full mb-8"
+            />
 
   <button 
         onClick={handleButtonClick}
         className="btn btn-primary w-full"
         disabled={loading} // Disable button during loading
       >
-        {loading ? "Uploading..." : "Upload Text"}
+        {loading ? "Uploading..." : "Save"}
       </button>
       </div>
     </main>
