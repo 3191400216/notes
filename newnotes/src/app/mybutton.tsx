@@ -8,6 +8,7 @@ type ReturnData = {
   };
   export default function MyButton () {
     const [text, setText] = useState<string>(""); // To track the input text
+    const [content, setContent] = useState("");
     const [loading, setLoading] = useState<boolean>(false); // To handle loading state
     const [successMessage, setSuccessMessage] = useState<string | null>(null); // To show success message
     const [error, setError] = useState<string | null>(null); // To show any error messages
@@ -17,15 +18,12 @@ type ReturnData = {
       setText(e.target.value);
     };
 
-    const handleWritingChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setText(e.target.value);
-    };
-
 const handleButtonClick = async () => {
-    if (text.trim() === "") {
+    if (text.trim() === "" || content.trim() === "") {
       alert("Please enter some text.");
       return;
     }
+
     setLoading(true); // Start loading
 
     try {
@@ -35,6 +33,7 @@ const handleButtonClick = async () => {
           "Content-Type": "application/json",  // Use JSON for request body
         },
         body: JSON.stringify({
+          title: content,
           content: text,
         }),
       });
@@ -47,7 +46,7 @@ const handleButtonClick = async () => {
         setError(null); // Reset error state
      
       } else {
-        setError(data.error || "An unknown error occurred");
+        setError(data.error ?? "An unknown error occurred");
       }
     } catch (error) {
       console.error("Error uploading text:", error);
@@ -68,17 +67,18 @@ const handleButtonClick = async () => {
         type="text"
         value={text}
         onChange={handleTextChange}
-        placeholder="Type here"
+        placeholder="Title"
         className="input input-bordered w-full mb-4"
+        required
       />
       
-      <input
-              type="text"
-              value={text}
-              onChange={handleWritingChange}
-              placeholder="Title"
+      <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Type here"
               className="input input-bordered w-full mb-8"
-            />
+              required
+        />
 
   <button 
         onClick={handleButtonClick}

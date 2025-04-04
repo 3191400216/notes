@@ -47,7 +47,7 @@ export default function HomePage() {
         setError(null); // Reset error state
      
       } else {
-        setError(data.error || "An unknown error occurred");
+        setError(data.error ?? "An unknown error occurred");
       }
     } catch (error) {
       console.error("Error uploading text:", error);
