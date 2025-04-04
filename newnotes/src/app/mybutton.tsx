@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 import Link from "next/link";
 import { useState, ChangeEvent } from 'react';
 
@@ -6,7 +6,7 @@ type ReturnData = {
     message: string;
     error?: string;
   };
-  export default function MyButton () {
+   function MyButton () {
     const [text, setText] = useState<string>(""); // To track the input text
     const [content, setContent] = useState("");
     const [loading, setLoading] = useState<boolean>(false); // To handle loading state
@@ -19,7 +19,7 @@ type ReturnData = {
     };
 
 const handleButtonClick = async () => {
-    if (text.trim() === "" || content.trim() === "") {
+    if (text.trim() === "") {
       alert("Please enter some text.");
       return;
     }
@@ -95,3 +95,4 @@ const handleButtonClick = async () => {
 
 //href = "/about" leads to about directory => page.tsx page there
 //export default myButton; if only one function there, if multiple cannot export
+*/
