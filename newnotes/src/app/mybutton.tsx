@@ -1,14 +1,14 @@
-/*"use client";
+"use client";
 import Link from "next/link";
 import { useState, ChangeEvent } from 'react';
-
+/*
 type ReturnData = {
     message: string;
     error?: string;
   };
    function MyButton () {
     const [text, setText] = useState<string>(""); // To track the input text
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false); // To handle loading state
     const [successMessage, setSuccessMessage] = useState<string | null>(null); // To show success message
     const [error, setError] = useState<string | null>(null); // To show any error messages
@@ -17,6 +17,10 @@ type ReturnData = {
     const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
       setText(e.target.value);
     };
+
+    const handleContentChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setContent(e.target.value);
+    }
 
 const handleButtonClick = async () => {
     if (text.trim() === "") {
@@ -67,15 +71,16 @@ const handleButtonClick = async () => {
         type="text"
         value={text}
         onChange={handleTextChange}
-        placeholder="Title"
+        placeholder="Content"
         className="input input-bordered w-full mb-4"
         required
       />
       
-      <textarea
+      <input
+              type="text"
               value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="Type here"
+              onChange={handleContentChange}
+              placeholder="Title"
               className="input input-bordered w-full mb-8"
               required
         />
@@ -92,7 +97,7 @@ const handleButtonClick = async () => {
   
   )
   }
+  */
 
 //href = "/about" leads to about directory => page.tsx page there
 //export default myButton; if only one function there, if multiple cannot export
-*/

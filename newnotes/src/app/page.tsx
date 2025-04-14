@@ -7,9 +7,9 @@ type ReturnData = {
     error?: string;
     };
 
-    function MyButton () {
+    function MyButton() {
     const [text, setText] = useState<string>(""); // To track the input text
-    const [content, setContent] = useState("");
+    const [title, setTitle] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false); // To handle loading state
     const [successMessage, setSuccessMessage] = useState<string | null>(null); // To show success message
     const [error, setError] = useState<string | null>(null); // To show any error messages
@@ -19,11 +19,15 @@ type ReturnData = {
       setText(e.target.value);
     };
 
+    const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setTitle(e.target.value);
+    };
+
     const handleButtonClick = async () => {
-    if (text.trim() === "") {
-      alert("Please enter some text.");
-      return;
-    }
+      if (text.trim() === "") {
+        alert("Please enter some text.");
+        return;
+      }
 
     setLoading(true); // Start loading
 
@@ -34,7 +38,7 @@ type ReturnData = {
           "Content-Type": "application/json",  // Use JSON for request body
         },
         body: JSON.stringify({
-          title: content,
+          title: title,
           content: text,
         }),
       });
@@ -68,15 +72,16 @@ return (
       type="text"
       value={text}
       onChange={handleTextChange}
-      placeholder="Title"
+      placeholder="Text"
       className="input input-bordered w-full mb-4"
       required
     />
     
-    <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Type here"
+    <input
+          type="text"
+            value={title}
+            onChange={handleTitleChange}
+            placeholder="Title"
             className="input input-bordered w-full mb-8"
             required
       />
@@ -103,4 +108,4 @@ export default function Page() {
     </div>
     </main>
     )
-  }
+  };
