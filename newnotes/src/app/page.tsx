@@ -1,26 +1,63 @@
 "use client";
 import Sidebar from "./sidebar"
-import { useState, ChangeEvent } from 'react';
+import { useState, useEffect } from 'react';
+import uploadData from "./_components/route";
+import { useRouter } from "next/navigation";
 
+/*
 type ReturnData = {
     message: string;
     error?: string;
-    };
+    }; */
 
-    function MyButton() {
+  export function MyButton() {
     const [text, setText] = useState<string>(""); // To track the input text
     const [title, setTitle] = useState<string>("");
-    const [loading, setLoading] = useState<boolean>(false); // To handle loading state
-    const [successMessage, setSuccessMessage] = useState<string | null>(null); // To show success message
-    const [error, setError] = useState<string | null>(null); // To show any error messages
+    const router = useRouter();
 
+    useEffect(() => {
 
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      const result = await uploadData(text, title);
+      console.log(result); // Handle the result as needed
+      router.push("/"); // Redirect to the home page after submission, not needed but good to have as example
+        };
+      
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Title"
+          required
+        />
+        <textarea
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Content"
+          required
+        />
+        <button type="submit">Upload</button>
+      </form>
+  
+    );
+  }
+/*
     const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setText(e.target.value);
+      const NewText = e.target.value;
+      setText(NewText);
+      const result = uploadData(NewText, title);
+      console.log("");
     };
 
-    const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setTitle(e.target.value);
+   const handleTitleChange = (a: ChangeEvent<HTMLInputElement>) => {
+      setTitle(a.target.value)
+
     };
 
     const handleButtonClick = async () => {
@@ -97,7 +134,7 @@ return (
   </main>
 
 )
-}
+}*/
 
 export default function Page() {
     return (
@@ -108,4 +145,6 @@ export default function Page() {
     </div>
     </main>
     )
-  };
+  }; 
+  
+
