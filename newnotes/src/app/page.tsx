@@ -24,6 +24,8 @@ type ReturnData = {
       const result = await uploadData(text, title);
       console.log(result); // Handle the result as needed
       router.push("/"); // Redirect to the home page after submission, not needed but good to have as example
+      setText("");
+      setTitle("");
         };
       
 
