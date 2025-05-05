@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import uploadData from "./_components/route";
 import { useRouter } from "next/navigation";
 
+
 /*
 type ReturnData = {
     message: string;
@@ -15,9 +16,7 @@ type ReturnData = {
     const [title, setTitle] = useState<string>("");
     const router = useRouter();
 
-    useEffect(() => {
-
-    }, []);
+    
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -28,7 +27,6 @@ type ReturnData = {
       setTitle("");
         };
       
-
     return (
       <form onSubmit={handleSubmit}>
         <input
@@ -134,16 +132,17 @@ return (
     </button>
     </div>
   </main>
-
 )
 }*/
 
 export default function Page() {
     return (
       <main className="">
+        <div className="">
        <Sidebar></Sidebar>
-    <div className="flex box-border size-100 gap-5 justify-center">
+    <div className="flex flex-col justify-center items-center box-border size-100 gap-5">
       <MyButton></MyButton>
+    </div>
     </div>
     </main>
     )
