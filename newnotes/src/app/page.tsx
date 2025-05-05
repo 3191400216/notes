@@ -3,7 +3,7 @@ import Sidebar from "./sidebar"
 import { useState, useEffect } from 'react';
 import uploadData from "./_components/route";
 import { useRouter } from "next/navigation";
-
+import main from "./notecards.tsx/page"
 
 /*
 type ReturnData = {
@@ -140,6 +140,7 @@ export default function Page() {
       <main className="">
         <div className="">
        <Sidebar></Sidebar>
+       <main></main>
     <div className="flex flex-col justify-center items-center box-border size-100 gap-5">
       <MyButton></MyButton>
     </div>

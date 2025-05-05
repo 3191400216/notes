@@ -1,5 +1,6 @@
-import { db } from "~/server/db";
-import { posts_01 } from "~/server/db/schema";
+import { db } from "~/server/db/index";
+
+
 
 export default async function main() {
   const data = await db.query.posts_01.findMany({
@@ -22,7 +23,7 @@ export default async function main() {
   //this is a grid layout, you can change the grid-cols-1 to whatever you want, just remember to use tailwind classes
   //the biggest change done here is basically you need to wrap all of the  tailwind card stuff with the map function
   // This forces the cards to be generated for each item in the arrayinstead of just one card for the whole array.
-      return (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      return (<div className="top-0 right-0 z-40 w-64 h-screen gap-4">
       {data.map((data,index) => (
         <div key={index} className="card w-96 bg-base-100 shadow-sm">
           <div className="card-body">
