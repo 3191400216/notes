@@ -3,7 +3,9 @@ import Sidebar from "./sidebar"
 import { useState, useEffect } from 'react';
 import uploadData from "./_components/route";
 import { useRouter } from "next/navigation";
-import main from "./notecards.tsx/page"
+import { title } from "process";
+import { db } from "~/server/db"
+
 
 /*
 type ReturnData = {
@@ -11,7 +13,7 @@ type ReturnData = {
     error?: string;
     }; */
 
-  export function MyButton() {
+ function MyButton() {
     const [text, setText] = useState<string>(""); // To track the input text
     const [title, setTitle] = useState<string>("");
     const router = useRouter();
@@ -47,19 +49,9 @@ type ReturnData = {
   
     );
   }
+
+
 /*
-    const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const NewText = e.target.value;
-      setText(NewText);
-      const result = uploadData(NewText, title);
-      console.log("");
-    };
-
-   const handleTitleChange = (a: ChangeEvent<HTMLInputElement>) => {
-      setTitle(a.target.value)
-
-    };
-
     const handleButtonClick = async () => {
       if (text.trim() === "") {
         alert("Please enter some text.");
@@ -131,22 +123,22 @@ return (
       {loading ? "Uploading..." : "Save"}
     </button>
     </div>
-  </main>
-)
-}*/
-
-export default function Page() {
-    return (
-      <main className="">
-        <div className="">
-       <Sidebar></Sidebar>
-       <main></main>
-    <div className="flex flex-col justify-center items-center box-border size-100 gap-5">
+    <div className="flex flex-col justify-center items-center box-border size-100 gap-7">
       <MyButton></MyButton>
     </div>
     </div>
-    </main>
-    )
-  }; 
+    ) 
+  }; */
   
+  export default function Page() {
+    return (
+      <div>
+        <div className = "justify justify-center gap-4">
+        <Sidebar></Sidebar>
+        
+        <MyButton></MyButton>
+        </div>
+      </div>
+    )
+  }
 
