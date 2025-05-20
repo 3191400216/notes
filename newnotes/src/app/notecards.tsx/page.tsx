@@ -1,4 +1,6 @@
 import { db } from "~/server/db/index";
+import dynamic from 'next/dynamic';
+
 
 export async function Notes() {
   const data = await db.query.posts_01.findMany({ 
