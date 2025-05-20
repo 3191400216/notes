@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import uploadData from "./_components/route";
 import { useRouter } from "next/navigation";
 import { title } from "process";
-import { db } from "~/server/db"
+import { db } from "~/server/db";
+import { Notes } from "./notecards.tsx/page";
+
 
 
 /*
@@ -32,6 +34,7 @@ type ReturnData = {
     return (
       <form onSubmit={handleSubmit}>
         <input
+          className = "bg-blue-500 text-blue-100"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -39,12 +42,13 @@ type ReturnData = {
           required
         />
         <textarea
+          className = "bg-yellow-100 text-yellow-500"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Content"
           required
         />
-        <button type="submit">Upload</button>
+        <button type="submit" className = "bg-green-200">Upload</button>
       </form>
   
     );
@@ -132,10 +136,14 @@ return (
   
   export default function Page() {
     return (
-      <div>
-        <div className = "justify justify-center gap-4">
+      <div className = "bg-pink-100 flex justify-center md:items-center">
+        <div className = "justify flex columns-3xs ">
         <Sidebar></Sidebar>
-        
+        </div>
+        <div>
+          <Notes></Notes>
+        </div>
+        <div className = "">
         <MyButton></MyButton>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { db } from "~/server/db/index";
 
-
-export async function main() {
+export async function Notes() {
   const data = await db.query.posts_01.findMany({ 
     columns: {
       content: true,
@@ -16,8 +15,6 @@ export async function main() {
           <div key={index}>{data.title} - {data.content}</div>
         ))}
       </div>)*/
-
-
   //this is how to format it with daisyUI cards, you can change the classes to whatever you want, just remember to use tailwind classes
   //this is a grid layout, you can change the grid-cols-1 to whatever you want, just remember to use tailwind classes
   //the biggest change done here is basically you need to wrap all of the  tailwind card stuff with the map function
@@ -27,7 +24,6 @@ export async function main() {
         <div key={index} className="card w-96 bg-base-100 shadow-sm">
           <div className="card-body">
             <h2 className="card-title">{data.title}</h2>
-            <p>{data.content}</p>
             <div className="justify-end card-actions">
             </div>
           </div>
